@@ -1,5 +1,9 @@
 <%= form_for @mood, url: {action: "create"} do |f| %>
   <%= f.label :status %>
-  <%= f.select :status, @status %>
+  <%= f.select :status do %>
+    <% @status.each do |status| -%>
+      <%= content_tag(:option, status, value: status) %>
+    <% end %>
+  <% end %>
   <%= f.submit 'Submit' %>
 <% end %>
